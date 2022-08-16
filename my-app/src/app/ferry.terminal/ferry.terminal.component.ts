@@ -12,11 +12,21 @@ import {
 })
 export class FerryTerminalComponent {
   currentVehicle?: VehicleSummary;
-  newVehicleArrSmall: any = [];
-  newVehicleArrLarge: any = [];
+  newVehicleArrCarSmall: any = [];
+  newVehicleArrVanSmall: any = [];
+  newVehicleArrTruckLarge: any = [];
+  newVehicleArrBusLarge: any = [];
   newVehicle: any = {};
   newFerrySmall: any = 0;
   newFerryLarge: any = 0;
+  newFerryCarSmall: any = 0;
+  newFerryVanSmall: any = 0;
+  newFerryTruckLarge: any = 0;
+  newFerryBusLarge: any = 0;
+  newFerrySmallCarPrice: any = 0;
+  newFerrySmallVanPrice: any = 0;
+  newFerryLargeTruckPrice: any = 0;
+  newFerryLargeBusPrice: any = 0;
 
 
   constructor(
@@ -29,32 +39,45 @@ export class FerryTerminalComponent {
 
     switch (this.currentVehicle.type) {
       case 0: {
-        this.newVehicleArrSmall.push(this.currentVehicle);
+        this.newVehicleArrCarSmall.push(this.currentVehicle);
         break;
       }
       case 1: {
-        this.newVehicleArrSmall.push(this.currentVehicle);
+        this.newVehicleArrVanSmall.push(this.currentVehicle);
         break;
       }
       case 2: {
-        this.newVehicleArrLarge.push(this.currentVehicle);
+        this.newVehicleArrTruckLarge.push(this.currentVehicle);
         break;
       }
       default: {
-        this.newVehicleArrLarge.push(this.currentVehicle);
+        this.newVehicleArrBusLarge.push(this.currentVehicle);
         break;
       }
     }
 
-    this.newFerrySmall = 8-this.newVehicleArrSmall.length
-    this.newFerryLarge = 6-this.newVehicleArrLarge.length
+    this.newFerrySmall = 8 - (this.newVehicleArrCarSmall.length + this.newVehicleArrVanSmall.length)
+    this.newFerryLarge = 6 - (this.newVehicleArrTruckLarge.length +this.newVehicleArrBusLarge.length)
+
+    this.newFerrySmallCarPrice = this.newVehicleArrCarSmall.length
+    this.newFerrySmallVanPrice = this.newVehicleArrVanSmall.length
+    this.newFerryLargeTruckPrice = this.newVehicleArrTruckLarge.length
+    this.newFerryLargeBusPrice = this.newVehicleArrBusLarge.length
 
 
-    if(8-this.newVehicleArrSmall.length==0){
+    if(this.newFerrySmall==0){
 
       alert('Ferry Small is full');
     }
-    if(6-this.newVehicleArrLarge  .length==0){
+    if(this.newFerrySmall==0){
+
+      alert('Ferry Small is full');
+    }
+    if(this.newFerryLarge==0){
+
+      alert('Ferry Large is full');
+    }
+    if(this.newFerryLarge==0){
 
       alert('Ferry Large is full');
     }
