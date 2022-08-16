@@ -1,0 +1,31 @@
+<p>ferry.terminal works!</p>
+<div>
+    Ferry logic goes here!
+    <br />
+    Please feel free to extend this component in anyway you like, the only limit
+    is your OWN IMAGINATION!
+    <br />
+
+    <h1>{{ 'Ferry Small Available: ' + newFerrySmall}}</h1>
+    <h1>{{ 'Ferry Large Available: ' + newFerryLarge}}</h1>
+
+    <div>        
+        <ul>
+            <li *ngFor="let vehicle of newVehicleArrSmall">
+                <span *ngIf="vehicle.type==0">{{'Small vehitype type: ' + vehicle.type}}</span>
+                <span *ngIf="vehicle.type==1">{{'Small vehitype type: ' + vehicle.type}}</span>
+            </li>
+        </ul>
+    </div>
+    <div>
+    <ul>
+        <li *ngFor="let vehicle of newVehicleArrLarge">
+            <span *ngIf="vehicle.type==2">{{'Large vehitype type: ' + vehicle.type}}</span>
+            <span *ngIf="vehicle.type==3">{{'Large vehitype type: ' + vehicle.type}}</span>
+        </li>
+    </ul>
+    </div>
+  
+    <button (click)="getVehicle()">Get Vehicle</button>
+  </div>
+  
